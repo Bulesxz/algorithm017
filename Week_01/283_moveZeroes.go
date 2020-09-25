@@ -21,6 +21,7 @@ func moveZeroes(nums []int) {
 	}
 }
 
+//非0元素个数即下一个非0元素改移动到的位置
 func moveZeroes2(nums []int) {
 	notZeroCnt := 0 //非元素个数
 	for i := 0; i < len(nums); i++ {
