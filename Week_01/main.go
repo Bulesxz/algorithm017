@@ -22,4 +22,11 @@ func main() {
 	node1 := &ListNode{1, node2}
 	head := swapPairs2(node1)
 	printList(head)
+
+	node8 := &ListNode{1, nil}
+	node7 := &ListNode{2, node8}
+	node6 := &ListNode{3, node7}
+
+	head = mergeTwoLists(node6, head)
+	printList(head)
 }

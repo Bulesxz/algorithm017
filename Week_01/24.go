@@ -1,16 +1,9 @@
 package main
 
-import "fmt"
-
 /*
 24. 两两交换链表中的节点
 https://leetcode-cn.com/problems/swap-nodes-in-pairs/
 */
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 //递归版本
 func swapPairs(head *ListNode) *ListNode {
@@ -50,11 +43,4 @@ func swapPairs2(head *ListNode) *ListNode {
 	}
 
 	return ret
-}
-
-func printList(head *ListNode) {
-	for head != nil {
-		fmt.Println(head.Val)
-		head = head.Next
-	}
 }
