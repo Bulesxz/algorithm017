@@ -29,4 +29,10 @@ func main() {
 
 	head = mergeTwoLists(node6, head)
 	printList(head)
+
+	nums = []int{-1, 0, 1, 2, -1, -4}
+	// nums = []int{-2, 0, 0, 2, 2}
+	r := threeSum2(nums)
+	fmt.Println(r)
+	// fmt.Println(nums)
 }
