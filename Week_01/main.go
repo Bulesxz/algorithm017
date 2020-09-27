@@ -35,4 +35,12 @@ func main() {
 	r := threeSum2(nums)
 	fmt.Println(r)
 	// fmt.Println(nums)
+
+	// secret := "1807"
+	// guess := "7810"
+
+	secret := "1123"
+	guess := "0111"
+	hint := getHint(secret, guess)
+	fmt.Println(hint)
 }
