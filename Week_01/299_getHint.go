@@ -65,11 +65,13 @@ func getHint2(secret string, guess string) string {
 			guessMap[guess[i]]--
 		}
 	}
-	guessB := 0
+
+	noguess := 0
 	for _, v := range guessMap {
-		if v >= 0 { //猜对了数字
-			guessB++
+		if v > 0 { //没有猜对的数字
+			noguess = noguess + v
 		}
 	}
+	guessB := len(secret) - noguess
 	return fmt.Sprintf("%dA%dB", guessA, guessB)
 }
