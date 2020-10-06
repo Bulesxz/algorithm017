@@ -26,11 +26,11 @@ func main() {
 
 	// fmt.Printf("最大值: %d\n", (*h)[0])
 
-	ugly := nthUglyNumber(10)
-	fmt.Println(ugly)
+	// ugly := nthUglyNumber(10)
+	// fmt.Println(ugly)
 
-	nums = []int{1, 1, 1, 2, 2, 3}
+	nums = []int{5, 3, 1, 1, 1, 3, 73, 1}
 	k := 2
-	topKFrequent(nums, k)
-
+	result3 := topKFrequent(nums, k)
+	fmt.Println(result3)
 }

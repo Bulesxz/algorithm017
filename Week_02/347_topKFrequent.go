@@ -2,7 +2,6 @@ package main
 
 import (
 	"container/heap"
-	"fmt"
 )
 
 /*
@@ -14,22 +13,28 @@ type Item struct {
 	Num   int
 	Times int
 }
-type ItemMaxHeap []Item
+type IteminHeap []Item
 
-func (h ItemMaxHeap) Len() int           { return len(h) }
-func (h ItemMaxHeap) Less(i, j int) bool { return h[i].Times > h[j].Times }
-func (h ItemMaxHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-func (h *ItemMaxHeap) Push(x interface{}) {
+func (h IteminHeap) Len() int           { return len(h) }
+func (h IteminHeap) Less(i, j int) bool { return h[i].Times < h[j].Times }
+func (h IteminHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h *IteminHeap) Push(x interface{}) {
 	// Push and Pop use pointer receivers because they modify the slice's length,
 	// not just its contents.
 	*h = append(*h, x.(Item))
 }
 
-func (h *ItemMaxHeap) Pop() interface{} {
+func (h *IteminHeap) Pop() interface{} {
 	old := *h
 	n := len(old)
 	x := old[n-1]
 	*h = old[0 : n-1]
+	return x
+}
+
+func (h *IteminHeap) Top() interface{} {
+	// n := len(*h)
+	x := (*h)[0]
 	return x
 }
 
@@ -39,18 +44,25 @@ func topKFrequent(nums []int, k int) []int {
 		fre[nums[i]]++
 	}
 
-	h := &ItemMaxHeap{}
+	h := &IteminHeap{}
 	heap.Init(h)
-	for k, v := range fre {
-		heap.Push(h, Item{k, v})
+	cnt := 0
+	for num, times := range fre {
+		if cnt >= k {
+			if h.Top().(Item).Times < times {
+				heap.Pop(h)
+			} else {
+				continue
+			}
+		}
+		heap.Push(h, Item{num, times})
+		cnt++
 	}
-	fmt.Println(h)
 
 	result := []int{}
 	for i := 0; i < k; i++ {
 		t := heap.Pop(h)
 		result = append(result, t.(Item).Num)
 	}
-	fmt.Println(result)
 	return result
 }
