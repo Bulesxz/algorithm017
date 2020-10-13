@@ -53,7 +53,7 @@ if __name__ == "__main__":
     n5.left = n2
     n4.right = n1
     def f(x):
-        print x.val
+        print (x.val)
     pre_traversal(n7,f)
 
     pre_traversal_recursive(n7, f)
