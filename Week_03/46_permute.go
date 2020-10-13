@@ -1,32 +1,41 @@
 package main
 
-import "fmt"
-
 /*
 46. 全排列
 https://leetcode-cn.com/problems/permutations/
 */
 
-func helper(nums []int, res []int, used map[int]bool) {
-	if len(res) == len(nums) {
-		return
+// func helper(nums []int, res []int, used map[int]bool) {
+// 	if len(res) == len(nums) {
+// 		return
+// 	}
+// 	for i := 0; i < len(nums); i++ {
+// 		if _, ok := used[nums[i]]; !ok {
+// 			res = append(res, nums[i])
+// 			used[nums[i]] = true
+// 			fmt.Println(res)
+// 			helper(nums, res, used)
+// 			break
+// 		}
+// 	}
+// }
+
+func helper(nums []int, begin int, res *[][]int) {
+	if begin == len(nums) {
+		r := make([]int, 3)
+		copy(r, nums)
+		*res = append(*res, r)
 	}
-	for i := 0; i < len(nums); i++ {
-		if _, ok := used[nums[i]]; !ok {
-			res = append(res, nums[i])
-			used[nums[i]] = true
-			fmt.Println(res)
-			helper(nums, res, used)
-			break
-		}
+	for i := begin; i < len(nums); i++ {
+		nums[begin], nums[i] = nums[i], nums[begin]
+		helper(nums, begin+1, res)
+		nums[begin], nums[i] = nums[i], nums[begin]
 	}
 }
+
+//递归
 func permute(nums []int) [][]int {
 	res := [][]int{}
-	for i := 0; i < len(nums); i++ {
-		r := []int{nums[i]}
-		helper(nums, r, map[int]bool{nums[i]: true})
-		res = append(res, r)
-	}
+	helper(nums, 0, &res)
 	return res
 }
