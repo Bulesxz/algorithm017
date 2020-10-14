@@ -6,7 +6,7 @@ import "sort"
 47. 全排列 II
 https://leetcode-cn.com/problems/permutations-ii/
 */
-func backtrace(nums []int, used []bool, path []int, dep int, res *[][]int) {
+func backtracePermuteUnique(nums []int, used []bool, path []int, dep int, res *[][]int) {
 	//1. 终止条件
 	if dep == len(nums) {
 		r := make([]int, len(nums))
@@ -28,7 +28,7 @@ func backtrace(nums []int, used []bool, path []int, dep int, res *[][]int) {
 		used[i] = true //进入
 		path = append(path, nums[i])
 		// fmt.Println("进入递归前:", used, i)
-		backtrace(nums, used, path, dep+1, res)
+		backtracePermuteUnique(nums, used, path, dep+1, res)
 		used[i] = false //撤销
 		path = path[:len(path)-1]
 		// fmt.Println("进入递归后:", used, i)
@@ -41,6 +41,6 @@ func permuteUnique(nums []int) [][]int {
 	res := [][]int{}
 	path := []int{}
 	sort.Ints(nums) //排序
-	backtrace(nums, used, path, 0, &res)
+	backtracePermuteUnique(nums, used, path, 0, &res)
 	return res
 }
