@@ -22,7 +22,7 @@ https://leetcode-cn.com/problems/permutations/
 
 func helper(nums []int, begin int, res *[][]int) {
 	if begin == len(nums) {
-		r := make([]int, 3)
+		r := make([]int, len(nums))
 		copy(r, nums)
 		*res = append(*res, r)
 	}
