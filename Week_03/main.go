@@ -11,6 +11,8 @@ func main() {
 	// res := generateParenthesis(3)
 	// fmt.Println(res)
 
-	res := myPow(-2, 4)
+	// res := myPow(-2, 4)
+	nums := []int{1, 2, 3}
+	res := subsets(nums)
 	fmt.Println(res)
 }
