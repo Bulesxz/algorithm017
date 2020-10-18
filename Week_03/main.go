@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// nums := []int{1, 2, 3, 4}
 	// res := permute(nums)
@@ -13,6 +15,8 @@ func main() {
 	// nums := []int{1, 3}
 	// res := subsets(nums)
 	// res := subsetsWithDup(nums)
+	digits := "23"
+	res := letterCombinations(digits)
+	fmt.Println(res)
 
-	// fmt.Println(res)
 }
