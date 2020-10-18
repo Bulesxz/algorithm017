@@ -33,3 +33,37 @@ func letterCombinations(digits string) []string {
 	backtraceLetterCombinations(0, digits, "", numbers, &res)
 	return res
 }
+
+//广度优先
+func letterCombinations2(digits string) []string {
+	if len(digits) == 0 {
+		return nil
+	}
+	numbers := map[string][]string{
+		"2": []string{"a", "b", "c"},
+		"3": []string{"d", "e", "f"},
+		"4": []string{"g", "h", "i"},
+		"5": []string{"j", "k", "l"},
+		"6": []string{"m", "n", "o"},
+		"7": []string{"p", "q", "r", "s"},
+		"8": []string{"t", "u", "v"},
+		"9": []string{"w", "x", "y", "z"},
+	}
+	res := []string{}
+
+	queue := []string{}
+	queue = append(queue, numbers[string(digits[0])]...)
+	index := 1
+
+	for len(queue) > 0 {
+		nums := queue[0]
+		queue = queue[1:]
+		//扩展子节点
+		nexts := numbers[string(digits[index])]
+		for _, a := range nexts {
+			queue = append(queue, nums+a)
+		}
+	}
+
+	return res
+}

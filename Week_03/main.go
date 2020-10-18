@@ -16,7 +16,7 @@ func main() {
 	// res := subsets(nums)
 	// res := subsetsWithDup(nums)
 	digits := "23"
-	res := letterCombinations(digits)
+	res := letterCombinations2(digits)
 	fmt.Println(res)
 
 }
