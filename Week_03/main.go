@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	// nums := []int{1, 2, 3, 4}
 	// res := permute(nums)
@@ -12,7 +10,9 @@ func main() {
 	// fmt.Println(res)
 
 	// res := myPow(-2, 4)
-	nums := []int{1, 2, 3}
-	res := subsets(nums)
-	fmt.Println(res)
+	// nums := []int{1, 3}
+	// res := subsets(nums)
+	// res := subsetsWithDup(nums)
+
+	// fmt.Println(res)
 }
