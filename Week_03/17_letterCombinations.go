@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func backtraceLetterCombinations(depth int, digits string, path string, numbers map[string][]string, res *[]string) {
 	//1.满足条件
 	if depth == len(digits) {
@@ -49,21 +53,24 @@ func letterCombinations2(digits string) []string {
 		"8": []string{"t", "u", "v"},
 		"9": []string{"w", "x", "y", "z"},
 	}
-	res := []string{}
 
 	queue := []string{}
-	queue = append(queue, numbers[string(digits[0])]...)
-	index := 1
-
-	for len(queue) > 0 {
-		nums := queue[0]
-		queue = queue[1:]
-		//扩展子节点
-		nexts := numbers[string(digits[index])]
-		for _, a := range nexts {
-			queue = append(queue, nums+a)
+	queue = append(queue, "")
+	for j := 0; j < len(digits); j++ { //bfs 层数
+		cnt := len(queue) //当前层队列长度
+		fmt.Println("====", cnt, string(digits[j]))
+		for i := 0; i < cnt; i++ { //当前层队列元素
+			fmt.Println("nums", queue, len(queue))
+			nums := queue[0]  //队列头
+			queue = queue[1:] //出队列
+			// fmt.Println("nums", nums, queue, len(queue))
+			//扩展子节点
+			nexts := numbers[string(digits[j])]
+			for _, a := range nexts {
+				queue = append(queue, nums+a)
+			}
 		}
 	}
 
-	return res
+	return queue
 }
