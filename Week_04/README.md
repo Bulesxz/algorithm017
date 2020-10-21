@@ -3,7 +3,7 @@
 # 广度优先
 - 1. 一层一层遍历
 - 2. 使用队列
-- 3. 模板
+- 3. 多叉树模板
 ``` go
 
 func bfs(root *Node) {
@@ -22,3 +22,19 @@ func bfs(root *Node) {
 }
 
 ```
+- 4. 对于图，需要增加 visit 访问集合去重、
+
+
+# 深度优先
+- 1. 不停的遍历子节点
+- 2. 递归法
+- 3. 多叉树模板
+``` go
+func dfs(root *Node){
+    visit(root)
+    for j:=0;j<root.childs;j++{
+        dfs(root.childs[j])
+    }
+}
+```
+- 4. 对于图，需要增加 visit 访问集合去重
